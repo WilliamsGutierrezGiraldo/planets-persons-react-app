@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import Navegacion from './components/Navegacion';
-import Bienvenida from './components/Bienvenida'
-// import Registro from './components/Registro'
-import Registro from './components/with-hooks/Registro'
-import Consultas from './components/Consultas'
+import Navigation from './components/Navigation';
+import Welcome from './components/Welcome'
 import {BrowserRouter as Router, Switch}  from 'react-router-dom';
 import { Route } from 'react-router-dom';
 import Planets from './components/Planets';
+import Persons from './components/Persons'
 import PlanetDetail from './components/PlanetDetail';
-import AgregarVivienda from './components/AgregarVivienda';
+import PersonDetail from './components/PersonDetail'
+import TopOfPlanets from './components/TopOfPlanets';
+import TopOfPersons from './components/TopOfPersons';
 import axios from './services/config.js';
 
 
@@ -43,16 +43,19 @@ export default class App extends Component {
     return (
       <div>
         <Router>
-            <Navegacion />
+            <Navigation />
             <Switch>
               <Route exact path="/planets">
                 <Planets planets={this.state.listPlanets}/>
               </Route>
-              <Route exact path="/registro">
-                <Registro />
+              <Route exact path="/persons">
+                <Persons persons={this.state.listPersons}/>
               </Route>
-              <Route exact path="/consultas">
-                <Consultas />
+              <Route exact path="/topOfPlanets">
+                <TopOfPlanets />
+              </Route>
+              <Route exact path="/topOfPersons">
+                <TopOfPersons />
               </Route>
               <Route exact path="/planetDetail/:planetId" render={(props) => {
                 let planetId = props.location.pathname.replace("/planetDetail/","");
@@ -61,10 +64,14 @@ export default class App extends Component {
                   <PlanetDetail info={info} />
                 )
               }}/>
-              <Route exact path="/agregarVivienda">
-                <AgregarVivienda />
-              </Route>
-              <Route path="/" exact component={Bienvenida} />
+              <Route exact path="/personDetail/:personId" render={(props) => {
+                let personId = props.location.pathname.replace("/personDetail/","");
+                let info = this.state.listPlanets.filter(person => person.id == personId)[0];
+                return(
+                  <PersonDetail info={info} />
+                )
+              }}/>
+              <Route path="/" exact component={Welcome} />
             </Switch>
         </Router>
       </div>

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-export default function Navegacion() {
+export default function Navigation() {
     return (
         <React.Fragment>
             <nav className="navbar navbar-expand-lg navbar navbar-dark bg-dark">
@@ -13,13 +13,13 @@ export default function Navegacion() {
                             <Link className="nav-link" to="/planets">Planets</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/registro">Registro</Link>
+                            <Link className="nav-link" to="/persons">Persons</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/consultas">Consulte sus reservas</Link>
+                            <Link className="nav-link" to="/topOfPlanets">Top of Planets</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/agregarVivienda">Publicar vivienda</Link>
+                            <Link className="nav-link" to="/topOfPersons">Top of Persons</Link>
                         </li>
                     </ul>
                 </div>

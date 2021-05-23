@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Bienvenida() {
+export default function Welcome() {
     return (
         <div className="container text-center mt-5">
             <h3>Planets & Persons App</h3>
